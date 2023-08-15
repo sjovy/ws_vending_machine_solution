@@ -3,15 +3,15 @@ package se.lexicon.data;
 import se.lexicon.model.Product;
 
 public interface VendingMachine {
-  void addCurrency(int amount);
+    void addCurrency(int amount);
 
-  int getBalance();
+    int getBalance();
 
-  Product request(int id);
+    Product request(int id);
 
-  int endSession();
+    int endSession();
 
-  String getDescription(int id);
+    String getDescription(int id);
 
-  String[] getProducts();
+    String[] getProducts();
 }
