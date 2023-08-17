@@ -1,10 +1,14 @@
-package se.lexicon.model;
+package se.lexicon.data;
 
 import org.junit.jupiter.api.Test;
 import se.lexicon.data.VendingMachineManager;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
+import se.lexicon.model.Beverage;
+import se.lexicon.model.Fruit;
+import se.lexicon.model.Product;
+import se.lexicon.model.Snack;
 
 class VendingMachineManagerTest {
 
