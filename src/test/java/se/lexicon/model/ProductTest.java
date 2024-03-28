@@ -8,13 +8,13 @@ class ProductTest {
 
     @Test
     void testExamine() {
-        Product product = new Snack(1, 1.5, "Chips");
+        Product product = new Snack( 1.5, "Chips");
         assertEquals("{ id: 1, snack: Chips }", product.examine());
     }
 
     @Test
     void testUse() {
-        Product product = new Fruit(2, "Apple", "Red", 0.75);
+        Product product = new Fruit( "Apple", "Red", 0.75);
         assertEquals("Apple taste delicious!", product.use());
     }
 }

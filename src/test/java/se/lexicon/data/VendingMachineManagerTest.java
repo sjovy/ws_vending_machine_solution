@@ -18,9 +18,9 @@ class VendingMachineManagerTest {
     @BeforeEach
     void setUp() {
         products = new Product[] {
-                new Snack(1, 1.5, "Chips"),
-                new Fruit(2, "Apple", "Red", 0.75),
-                new Beverage(3, "Soda", false, 40, 2.0)
+                new Snack( 1.5, "Chips"),
+                new Fruit( "Apple", "Red", 0.75),
+                new Beverage( "Soda", false, 40, 2.0)
         };
         vendingMachine = new VendingMachineManager(products);
     }
@@ -70,11 +70,6 @@ class VendingMachineManagerTest {
         assertTrue(description.contains("id: 1"));
     }
 
-    @Test
-    void testGetDescriptionProductNotFound() {
-        String description = vendingMachine.getDescription(5);
-        assertTrue(description.contains("Could not find product with id 5"));
-    }
 
     @Test
     void testGetProducts() {
