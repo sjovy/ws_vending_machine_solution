@@ -5,8 +5,8 @@ public class Beverage extends Product {
     private final boolean alcoholic;
     private final int sugarPercentage;
 
-    public Beverage(int id, String productName, boolean alcoholic, int sugarPercentage, double price) {
-        super(id, price, productName);
+    public Beverage(String productName, boolean alcoholic, int sugarPercentage, double price) {
+        super(price, productName);
         this.alcoholic = alcoholic;
         this.sugarPercentage = sugarPercentage;
     }

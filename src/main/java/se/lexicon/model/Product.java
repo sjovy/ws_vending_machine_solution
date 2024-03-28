@@ -2,12 +2,13 @@ package se.lexicon.model;
 
 public abstract class Product {
 
+    private static int sequencer = 0;
     private final int id;
     private double price;
     private String productName;
 
-    public Product(int id, double price, String productName) {
-        this.id = id;
+    public Product(double price, String productName) {
+        this.id = ++sequencer;
         this.price = price;
         this.productName = productName;
     }

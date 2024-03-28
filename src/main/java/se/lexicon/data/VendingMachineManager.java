@@ -14,11 +14,20 @@ public class VendingMachineManager implements VendingMachine {
 
     @Override
     public void addCurrency(int amount) {
-        for (int validDenomination : VALID_DENOMINATIONS) {
-            if (validDenomination == amount) {
-                depositPool += amount;
+        if (isValidDenomination(amount)) {
+            depositPool += amount;
+        } else {
+            throw new IllegalArgumentException("Invalid denomination: " + amount);
+        }
+    }
+
+    private boolean isValidDenomination(int amount) {
+        for (int denomination : VALID_DENOMINATIONS) {
+            if (denomination == amount) {
+                return true;
             }
         }
+        return false;
     }
 
     @Override
@@ -28,35 +37,43 @@ public class VendingMachineManager implements VendingMachine {
 
     @Override
     public Product request(int id) {
+        Product requestedProduct = findProductById(id);
+        if (requestedProduct != null) {
+            if (requestedProduct.getPrice() <= depositPool) {
+                depositPool -= requestedProduct.getPrice();
+                return requestedProduct;
+            } else {
+                throw new IllegalArgumentException("Insufficient funds for product: " + requestedProduct.getProductName());
+            }
+        } else {
+            throw new IllegalArgumentException("Product not found with id: " + id);
+        }
+    }
+
+    private Product findProductById(int id) {
         for (Product product : products) {
             if (product.getId() == id) {
-                if (product.getPrice() <= depositPool) {
-                    depositPool = (int) (depositPool - product.getPrice());
-                    return product;
-                } else {
-                    throw new RuntimeException("Product " + product.getProductName() + " is too expensive");
-                }
+                return product;
             }
         }
-        throw new RuntimeException("Could not find Product with id " + id);
+        return null;
     }
 
     @Override
     public int endSession() {
-        int temp = depositPool;
+        int balance = depositPool;
         depositPool = 0;
-        return temp;
+        return balance;
     }
 
     @Override
     public String getDescription(int id) {
-        String notFound = "Could not find product with id " + id;
-        for (Product product : products) {
-            if (product.getId() == id) {
-                return product.examine().concat(" price: " + product.getPrice());
-            }
+        Product product = findProductById(id);
+        if (product != null) {
+            return product.examine() + " price: " + product.getPrice();
+        } else {
+            return "Product not found with id: " + id;
         }
-        return notFound;
     }
 
     @Override

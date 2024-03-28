@@ -3,8 +3,8 @@ package se.lexicon.model;
 public class Snack extends Product {
 
 
-    public Snack(int id, double price, String snack) {
-        super(id, price, snack);
+    public Snack(double price, String snack) {
+        super(price, snack);
     }
 
     @Override

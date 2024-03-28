@@ -11,12 +11,12 @@ import se.lexicon.model.Snack;
 public class App {
     public static void main(String[] args) {
         Product[] products = {
-                new Beverage(1, "Beer", true, 30, 75),
-                new Beverage(2, "Orange Juice", false, 25, 20),
-                new Fruit(3, "Orange", "Orange", 10),
-                new Fruit(4, "Banana", "Yellow", 11),
-                new Snack(5, 20, "Snickers"),
-                new Snack(6, 1000, "Exclusive snack")
+                new Beverage("Beer", true, 30, 75),
+                new Beverage("Orange Juice", false, 25, 20),
+                new Fruit("Orange", "Orange", 10),
+                new Fruit("Banana", "Yellow", 11),
+                new Snack(20, "Snickers"),
+                new Snack(1000, "Exclusive snack")
         };
         VendingMachine vendingMachine = new VendingMachineManager(products);
 

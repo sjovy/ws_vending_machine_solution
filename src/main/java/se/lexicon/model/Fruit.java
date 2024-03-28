@@ -4,8 +4,8 @@ public class Fruit extends Product {
 
     private final String color;
 
-    public Fruit(int id, String fruitType, String color, double price) {
-        super(id, price, fruitType);
+    public Fruit(String fruitType, String color, double price) {
+        super(price, fruitType);
         this.color = color;
     }
 
