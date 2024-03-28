@@ -1,17 +1,17 @@
 package se.lexicon.model;
 
 public interface Product {
-  String examine();
+    String examine();
 
-  String use();
+    String use();
 
-  int getId();
+    int getId();
 
-  String getProductName();
+    String getProductName();
 
-  void setProductName(String productName);
+    void setProductName(String productName);
 
-  double getPrice();
+    double getPrice();
 
-  void setPrice(double price);
+    void setPrice(double price);
 }
